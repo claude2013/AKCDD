@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AKCDD</title>
+
+    <style>
+
+        body {
+
+            font-family: Arial, sans-serif;
+
+            background-color: #f4f1ea;
+
+            color: #222222;
+
+            text-align: center;
+
+            padding: 30px;
+
+        }
+
+        h1 {
+
+            color: #8a6d3b;
+
+        }
+
+        select {
+
+            padding: 10px;
+
+            font-size: 16px;
+
+            border-radius: 8px;
+
+        }
+
+        button {
+
+            padding: 12px 20px;
+
+            margin: 15px;
+
+            font-size: 16px;
+
+            border: none;
+
+            border-radius: 8px;
+
+            background-color: #8a6d3b;
+
+            color: white;
+
+            cursor: pointer;
+
+        }
+
+        #zone-traduction {
+
+            margin: 20px auto;
+
+            padding: 15px;
+
+            border: 1px solid #8a6d3b;
+
+            border-radius: 12px;
+
+            max-width: 500px;
+
+            min-height: 50px;
+
+        }
+
+        #video-camera {
+
+            width: 100%;
+
+            max-width: 400px;
+
+            display: none;
+
+            border-radius: 12px;
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <label for="choix-langue">Choisir la langue :</label>
+
+    <select id="choix-langue">
+
+        <option value="fr">Français</option>
+
+        <option value="en">English</option>
+
+        <option value="es">Español</option>
+
+        <option value="de">Deutsch</option>
+
+        <option value="ar">العربية</option>
+
+        <option value="zh">中文</option>
+
+        <option value="pt">Português</option>
+
+        <option value="ht">Kreyòl ayisyen</option>
+
+    </select>
+
+    <h1 id="welcome">Bienvenue sur AKCDD</h1>
+
+    <p id="description">
+
+        Une application pour aider les personnes entendantes à comprendre les personnes qui communiquent en langue des signes.
+
+    </p>
+
+    <h2 id="subtitle">La communication nous rapproche</h2>
+
+    <p id="objective">
+
+        Notre objectif est de faciliter les échanges entre les personnes entendantes et les personnes qui utilisent la langue des signes.
+
+    </p>
+
+    <h2>Traduction en LSQ</h2>
+
+    <div id="zone-traduction">
+
+        <p>La traduction apparaîtra ici.</p>
+
+    </div>
+
+    <button id="ouvrir-camera">
+
+        Ouvrir la caméra
+
+    </button>
+
+    <p id="statut-camera">
+
+        La caméra n'est pas encore activée.
+
+    </p>
+
+    <video id="video-camera" autoplay playsinline></video>
+
+    <script>
+
+        const langues = {
+
+            fr: {
+
+                welcome: "Bienvenue sur AKCDD",
+
+                description: "Une application pour aider les personnes entendantes à comprendre les personnes qui communiquent en langue des signes.",
+
+                subtitle: "La communication nous rapproche",
+
+                objective: "Notre objectif est de faciliter les échanges entre les personnes entendantes et les personnes qui utilisent la langue des signes."
+
+            },
+
+            en: {
+
+                welcome: "Welcome to AKCDD",
+
+                description: "An app that helps hearing people understand people who communicate using sign language.",
+
+                subtitle: "Communication brings us closer",
+
+                objective: "Our goal is to make communication easier between hearing people and people who use sign language."
+
+            },
+
+            es: {
+
+                welcome: "Bienvenido/a a AKCDD",
+
+                description: "Una aplicación que ayuda a las personas oyentes a comprender a quienes se comunican mediante la lengua de señas.",
+
+                subtitle: "La comunicación nos acerca",
+
+                objective: "Nuestro objetivo es facilitar la comunicación entre las personas oyentes y las personas que utilizan la lengua de señas."
+
+            },
+
+            de: {
+
+                welcome: "Willkommen bei AKCDD",
+
+                description: "Eine App, die hörenden Menschen hilft, Menschen zu verstehen, die Gebärdensprache verwenden.",
+
+                subtitle: "Kommunikation verbindet uns",
+
+                objective: "Unser Ziel ist es, die Kommunikation zwischen hörenden Menschen und Menschen, die Gebärdensprache verwenden, zu erleichtern."
+
+            },
+
+            ar: {
+
+                welcome: "مرحبًا بك في AKCDD",
+
+                description: "تطبيق يساعد الأشخاص السامعين على فهم الأشخاص الذين يتواصلون بلغة الإشارة.",
+
+                subtitle: "التواصل يقربنا من بعضنا",
+
+                objective: "هدفنا هو تسهيل التواصل بين الأشخاص السامعين والأشخاص الذين يستخدمون لغة الإشارة."
+
+            },
+
+            zh: {
+
+                welcome: "欢迎使用 AKCDD",
+
+                description: "这是一款帮助听人理解使用手语交流的人的应用。",
+
+                subtitle: "沟通让我们更亲近",
+
+                objective: "我们的目标是让听人和使用手语的人之间的交流更加方便。"
+
+            },
+
+            pt: {
+
+                welcome: "Bem-vindo ao AKCDD",
+
+                description: "Um aplicativo que ajuda pessoas ouvintes a compreender pessoas que se comunicam por meio da língua de sinais.",
+
+                subtitle: "A comunicação nos aproxima",
+
+                objective: "Nosso objetivo é facilitar a comunicação entre pessoas ouvintes e pessoas que utilizam a língua de sinais."
+
+            },
+
+            ht: {
+
+                welcome: "Byenveni sou AKCDD",
+
+                description: "Se yon aplikasyon ki ede moun ki tande yo konprann moun ki kominike nan lang siy.",
+
+                subtitle: "Kominikasyon fè nou vin pi pwòch",
+
+                objective: "Objektif nou se fasilite kominikasyon ant moun ki tande yo ak moun ki sèvi ak lang siy."
+
+            }
+
+        };
+
+        function changerLangue(langue) {
+
+            const traduction = langues[langue];
+
+            if (!traduction) {
+
+                return;
+
+            }
+
+            document.getElementById("welcome").textContent = traduction.welcome;
+
+            document.getElementById("description").textContent = traduction.description;
+
+            document.getElementById("subtitle").textContent = traduction.subtitle;
+
+            document.getElementById("objective").textContent = traduction.objective;
+
+            document.documentElement.lang = langue;
+
+            document.body.dir = langue === "ar" ? "rtl" : "ltr";
+
+        }
+
+        document.getElementById("choix-langue").addEventListener("change", function () {
+
+            changerLangue(this.value);
+
+        });
+
+        async function ouvrirCamera() {
+
+            const video = document.getElementById("video-camera");
+
+            const statut = document.getElementById("statut-camera");
+
+            if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+
+                statut.textContent = "La caméra n'est pas disponible dans cet environnement.";
+
+                return;
+
+            }
+
+            try {
+
+                const flux = await navigator.mediaDevices.getUserMedia({
+
+                    video: true,
+
+                    audio: false
+
+                });
+
+                video.srcObject = flux;
+
+                video.style.display = "block";
+
+                statut.textContent = "Caméra activée.";
+
+            } catch (erreur) {
+
+                statut.textContent = "Impossible d'accéder à la caméra. Vérifie les autorisations.";
+
+            }
+
+        }
+
+        document.getElementById("ouvrir-camera").addEventListener("click", ouvrirCamera);
+
+    </script>
+
+</body>
+
+</html>
